@@ -1,0 +1,13 @@
+# Mac half (Python 3.13, no PyTorch — Intel macOS has no modern torch wheels).
+# Covers: data loading, schema work, LightGBM baselines, graph stats, visualisation.
+relbench
+pandas
+pyarrow
+numpy
+lightgbm
+networkx
+python-louvain
+pyvis
+matplotlib
+tqdm
+ruff

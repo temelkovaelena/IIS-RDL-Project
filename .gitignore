@@ -1,0 +1,27 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Downloaded / generated data — never commit (regenerable, and large)
+data/*
+!data/.gitkeep
+# ...except the two small generated json files, which are results the README refers to.
+!data/schema.json
+!data/graph_stats.json
+
+# Model checkpoints
+*.pt
+*.pth
+
+# Secrets — never commit
+.env
+*.token
+kaggle.json
+
+# macOS
+.DS_Store
+
+# NOTE: output/ IS tracked on purpose — evaluation.csv, *.gexf and figures
+# are deliverables that the README refers to.

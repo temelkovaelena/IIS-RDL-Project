@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-toolsai.jupyter",
+    "charliermarsh.ruff",
+    "mechatroner.rainbow-csv",
+    "eamodio.gitlens"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Current file",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": false
+    },
+    {
+      "name": "baseline: flat",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/baseline_tabular.py",
+      "args": ["--mode", "flat", "--task", "driver-top3", "--out", "output/evaluation.csv"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": false
+    },
+    {
+      "name": "baseline: engineered",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/baseline_tabular.py",
+      "args": ["--mode", "engineered", "--task", "driver-top3", "--out", "output/evaluation.csv"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": false
+    }
+  ]
+}
