@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-09-23">
+    <creator>NetworkX 3.7</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="edge">
+      <attribute id="5" title="fkey" type="string" />
+      <attribute id="6" title="n_edges" type="long" />
+    </attributes>
+    <attributes mode="static" class="node">
+      <attribute id="0" title="n_rows" type="long" />
+      <attribute id="1" title="time_col" type="string" />
+      <attribute id="2" title="is_static" type="boolean" />
+      <attribute id="3" title="hops_from_drivers" type="long" />
+      <attribute id="4" title="colour" type="string" />
+    </attributes>
+    <nodes>
+      <node id="races" label="races">
+        <attvalues>
+          <attvalue for="0" value="820" />
+          <attvalue for="1" value="date" />
+          <attvalue for="2" value="false" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="#f28e2b" />
+        </attvalues>
+      </node>
+      <node id="qualifying" label="qualifying">
+        <attvalues>
+          <attvalue for="0" value="4082" />
+          <attvalue for="1" value="date" />
+          <attvalue for="2" value="false" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="#76b7b2" />
+        </attvalues>
+      </node>
+      <node id="constructor_standings" label="constructor_standings">
+        <attvalues>
+          <attvalue for="0" value="10170" />
+          <attvalue for="1" value="date" />
+          <attvalue for="2" value="false" />
+          <attvalue for="3" value="3" />
+          <attvalue for="4" value="#bab0ac" />
+        </attvalues>
+      </node>
+      <node id="standings" label="standings">
+        <attvalues>
+          <attvalue for="0" value="28115" />
+          <attvalue for="1" value="date" />
+          <attvalue for="2" value="false" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="#59a14f" />
+        </attvalues>
+      </node>
+      <node id="constructors" label="constructors">
+        <attvalues>
+          <attvalue for="0" value="211" />
+          <attvalue for="1" value="" />
+          <attvalue for="2" value="true" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="#b07aa1" />
+        </attvalues>
+      </node>
+      <node id="drivers" label="drivers">
+        <attvalues>
+          <attvalue for="0" value="857" />
+          <attvalue for="1" value="" />
+          <attvalue for="2" value="true" />
+          <attvalue for="3" value="0" />
+          <attvalue for="4" value="#e15759" />
+        </attvalues>
+      </node>
+      <node id="constructor_results" label="constructor_results">
+        <attvalues>
+          <attvalue for="0" value="9408" />
+          <attvalue for="1" value="date" />
+          <attvalue for="2" value="false" />
+          <attvalue for="3" value="3" />
+          <attvalue for="4" value="#9c755f" />
+        </attvalues>
+      </node>
+      <node id="circuits" label="circuits">
+        <attvalues>
+          <attvalue for="0" value="77" />
+          <attvalue for="1" value="" />
+          <attvalue for="2" value="true" />
+          <attvalue for="3" value="3" />
+          <attvalue for="4" value="#edc948" />
+        </attvalues>
+      </node>
+      <node id="results" label="results">
+        <attvalues>
+          <attvalue for="0" value="20323" />
+          <attvalue for="1" value="date" />
+          <attvalue for="2" value="false" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="#4e79a7" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="races" target="circuits" id="0" label="circuitId">
+        <attvalues>
+          <attvalue for="5" value="circuitId" />
+          <attvalue for="6" value="820" />
+        </attvalues>
+      </edge>
+      <edge source="qualifying" target="races" id="1" label="raceId">
+        <attvalues>
+          <attvalue for="5" value="raceId" />
+          <attvalue for="6" value="4082" />
+        </attvalues>
+      </edge>
+      <edge source="qualifying" target="drivers" id="2" label="driverId">
+        <attvalues>
+          <attvalue for="5" value="driverId" />
+          <attvalue for="6" value="4082" />
+        </attvalues>
+      </edge>
+      <edge source="qualifying" target="constructors" id="3" label="constructorId">
+        <attvalues>
+          <attvalue for="5" value="constructorId" />
+          <attvalue for="6" value="4082" />
+        </attvalues>
+      </edge>
+      <edge source="constructor_standings" target="races" id="4" label="raceId">
+        <attvalues>
+          <attvalue for="5" value="raceId" />
+          <attvalue for="6" value="10170" />
+        </attvalues>
+      </edge>
+      <edge source="constructor_standings" target="constructors" id="5" label="constructorId">
+        <attvalues>
+          <attvalue for="5" value="constructorId" />
+          <attvalue for="6" value="10170" />
+        </attvalues>
+      </edge>
+      <edge source="standings" target="races" id="6" label="raceId">
+        <attvalues>
+          <attvalue for="5" value="raceId" />
+          <attvalue for="6" value="28115" />
+        </attvalues>
+      </edge>
+      <edge source="standings" target="drivers" id="7" label="driverId">
+        <attvalues>
+          <attvalue for="5" value="driverId" />
+          <attvalue for="6" value="28115" />
+        </attvalues>
+      </edge>
+      <edge source="constructor_results" target="races" id="8" label="raceId">
+        <attvalues>
+          <attvalue for="5" value="raceId" />
+          <attvalue for="6" value="9408" />
+        </attvalues>
+      </edge>
+      <edge source="constructor_results" target="constructors" id="9" label="constructorId">
+        <attvalues>
+          <attvalue for="5" value="constructorId" />
+          <attvalue for="6" value="9408" />
+        </attvalues>
+      </edge>
+      <edge source="results" target="races" id="10" label="raceId">
+        <attvalues>
+          <attvalue for="5" value="raceId" />
+          <attvalue for="6" value="20323" />
+        </attvalues>
+      </edge>
+      <edge source="results" target="drivers" id="11" label="driverId">
+        <attvalues>
+          <attvalue for="5" value="driverId" />
+          <attvalue for="6" value="20323" />
+        </attvalues>
+      </edge>
+      <edge source="results" target="constructors" id="12" label="constructorId">
+        <attvalues>
+          <attvalue for="5" value="constructorId" />
+          <attvalue for="6" value="20323" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>
