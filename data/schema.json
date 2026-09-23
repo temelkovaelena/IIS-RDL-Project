@@ -1,0 +1,894 @@
+{
+  "database": "rel-f1",
+  "relbench_version": "3.0.1",
+  "generated_utc": "2026-09-23T10:14:11+00:00",
+  "db_upto_test_timestamp": true,
+  "val_timestamp": "2005-01-01 00:00:00",
+  "test_timestamp": "2010-01-01 00:00:00",
+  "n_tables": 9,
+  "n_rows_total": 74063,
+  "available_tasks": [
+    "driver-circuit-compete",
+    "driver-dnf",
+    "driver-position",
+    "driver-top3",
+    "qualifying-position",
+    "results-position"
+  ],
+  "hop_roots": [
+    "circuits",
+    "drivers"
+  ],
+  "tables": {
+    "circuits": {
+      "n_rows": 77,
+      "pkey_col": "circuitId",
+      "time_col": null,
+      "time_range": null,
+      "fkeys": {},
+      "referenced_by": [
+        "races.circuitId"
+      ],
+      "dangling_fkeys": {},
+      "hops_from": {
+        "circuits": 0,
+        "drivers": 3
+      },
+      "columns": {
+        "circuitId": {
+          "dtype": "Int64",
+          "kind": "pkey",
+          "n_null": 0,
+          "n_unique": 77
+        },
+        "circuitRef": {
+          "dtype": "object",
+          "kind": "categorical",
+          "n_null": 0,
+          "n_unique": 77
+        },
+        "name": {
+          "dtype": "object",
+          "kind": "categorical",
+          "n_null": 0,
+          "n_unique": 77
+        },
+        "location": {
+          "dtype": "object",
+          "kind": "categorical",
+          "n_null": 0,
+          "n_unique": 75
+        },
+        "country": {
+          "dtype": "object",
+          "kind": "categorical",
+          "n_null": 0,
+          "n_unique": 35
+        },
+        "lat": {
+          "dtype": "float64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 77,
+          "min": -37.8497,
+          "max": 57.2653
+        },
+        "lng": {
+          "dtype": "float64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 77,
+          "min": -118.189,
+          "max": 144.968
+        },
+        "alt": {
+          "dtype": "float64",
+          "kind": "numeric",
+          "n_null": 3,
+          "n_unique": 65,
+          "min": -7.0,
+          "max": 2227.0
+        }
+      }
+    },
+    "constructor_results": {
+      "n_rows": 9408,
+      "pkey_col": "constructorResultsId",
+      "time_col": "date",
+      "time_range": {
+        "min": "1956-01-22 00:00:00",
+        "max": "2009-11-01 11:00:00"
+      },
+      "fkeys": {
+        "raceId": "races",
+        "constructorId": "constructors"
+      },
+      "referenced_by": [],
+      "dangling_fkeys": {
+        "raceId": 0,
+        "constructorId": 0
+      },
+      "hops_from": {
+        "circuits": 2,
+        "drivers": 3
+      },
+      "columns": {
+        "constructorResultsId": {
+          "dtype": "Int64",
+          "kind": "pkey",
+          "n_null": 0,
+          "n_unique": 9408
+        },
+        "raceId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 757
+        },
+        "constructorId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 163
+        },
+        "points": {
+          "dtype": "float64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 24,
+          "min": 0.0,
+          "max": 19.0
+        },
+        "date": {
+          "dtype": "datetime64[ns]",
+          "kind": "timestamp",
+          "n_null": 0,
+          "n_unique": 757,
+          "min": "1956-01-22 00:00:00",
+          "max": "2009-11-01 11:00:00"
+        }
+      }
+    },
+    "constructor_standings": {
+      "n_rows": 10170,
+      "pkey_col": "constructorStandingsId",
+      "time_col": "date",
+      "time_range": {
+        "min": "1958-01-19 00:00:00",
+        "max": "2009-11-01 11:00:00"
+      },
+      "fkeys": {
+        "raceId": "races",
+        "constructorId": "constructors"
+      },
+      "referenced_by": [],
+      "dangling_fkeys": {
+        "raceId": 0,
+        "constructorId": 0
+      },
+      "hops_from": {
+        "circuits": 2,
+        "drivers": 3
+      },
+      "columns": {
+        "constructorStandingsId": {
+          "dtype": "Int64",
+          "kind": "pkey",
+          "n_null": 0,
+          "n_unique": 10170
+        },
+        "raceId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 756
+        },
+        "constructorId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 147
+        },
+        "points": {
+          "dtype": "float64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 247,
+          "min": 0.0,
+          "max": 262.0
+        },
+        "position": {
+          "dtype": "int64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 22,
+          "min": 1.0,
+          "max": 22.0
+        },
+        "wins": {
+          "dtype": "int64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 16,
+          "min": 0.0,
+          "max": 15.0
+        },
+        "date": {
+          "dtype": "datetime64[ns]",
+          "kind": "timestamp",
+          "n_null": 0,
+          "n_unique": 756,
+          "min": "1958-01-19 00:00:00",
+          "max": "2009-11-01 11:00:00"
+        }
+      }
+    },
+    "constructors": {
+      "n_rows": 211,
+      "pkey_col": "constructorId",
+      "time_col": null,
+      "time_range": null,
+      "fkeys": {},
+      "referenced_by": [
+        "constructor_results.constructorId",
+        "constructor_standings.constructorId",
+        "qualifying.constructorId",
+        "results.constructorId"
+      ],
+      "dangling_fkeys": {},
+      "hops_from": {
+        "circuits": 3,
+        "drivers": 2
+      },
+      "columns": {
+        "constructorId": {
+          "dtype": "Int64",
+          "kind": "pkey",
+          "n_null": 0,
+          "n_unique": 211
+        },
+        "constructorRef": {
+          "dtype": "object",
+          "kind": "text",
+          "n_null": 0,
+          "n_unique": 211
+        },
+        "name": {
+          "dtype": "object",
+          "kind": "text",
+          "n_null": 0,
+          "n_unique": 211
+        },
+        "nationality": {
+          "dtype": "object",
+          "kind": "categorical",
+          "n_null": 0,
+          "n_unique": 24
+        }
+      }
+    },
+    "drivers": {
+      "n_rows": 857,
+      "pkey_col": "driverId",
+      "time_col": null,
+      "time_range": null,
+      "fkeys": {},
+      "referenced_by": [
+        "qualifying.driverId",
+        "results.driverId",
+        "standings.driverId"
+      ],
+      "dangling_fkeys": {},
+      "hops_from": {
+        "circuits": 3,
+        "drivers": 0
+      },
+      "columns": {
+        "driverId": {
+          "dtype": "Int64",
+          "kind": "pkey",
+          "n_null": 0,
+          "n_unique": 857
+        },
+        "driverRef": {
+          "dtype": "object",
+          "kind": "text",
+          "n_null": 0,
+          "n_unique": 857
+        },
+        "code": {
+          "dtype": "object",
+          "kind": "categorical",
+          "n_null": 0,
+          "n_unique": 95
+        },
+        "forename": {
+          "dtype": "object",
+          "kind": "text",
+          "n_null": 0,
+          "n_unique": 476
+        },
+        "surname": {
+          "dtype": "object",
+          "kind": "text",
+          "n_null": 0,
+          "n_unique": 798
+        },
+        "dob": {
+          "dtype": "datetime64[ns]",
+          "kind": "timestamp",
+          "n_null": 0,
+          "n_unique": 839,
+          "min": "1896-12-28 00:00:00",
+          "max": "2001-04-06 00:00:00"
+        },
+        "nationality": {
+          "dtype": "object",
+          "kind": "categorical",
+          "n_null": 0,
+          "n_unique": 42
+        }
+      }
+    },
+    "qualifying": {
+      "n_rows": 4082,
+      "pkey_col": "qualifyId",
+      "time_col": "date",
+      "time_range": {
+        "min": "1994-03-26 00:00:00",
+        "max": "2009-10-31 11:00:00"
+      },
+      "fkeys": {
+        "raceId": "races",
+        "driverId": "drivers",
+        "constructorId": "constructors"
+      },
+      "referenced_by": [],
+      "dangling_fkeys": {
+        "raceId": 0,
+        "driverId": 0,
+        "constructorId": 0
+      },
+      "hops_from": {
+        "circuits": 2,
+        "drivers": 1
+      },
+      "columns": {
+        "qualifyId": {
+          "dtype": "Int64",
+          "kind": "pkey",
+          "n_null": 0,
+          "n_unique": 4082
+        },
+        "raceId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 189
+        },
+        "driverId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 117
+        },
+        "constructorId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 32
+        },
+        "number": {
+          "dtype": "int64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 34,
+          "min": 0.0,
+          "max": 34.0
+        },
+        "position": {
+          "dtype": "int64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 28,
+          "min": 1.0,
+          "max": 28.0
+        },
+        "date": {
+          "dtype": "datetime64[ns]",
+          "kind": "timestamp",
+          "n_null": 0,
+          "n_unique": 189,
+          "min": "1994-03-26 00:00:00",
+          "max": "2009-10-31 11:00:00"
+        }
+      }
+    },
+    "races": {
+      "n_rows": 820,
+      "pkey_col": "raceId",
+      "time_col": "date",
+      "time_range": {
+        "min": "1950-05-13 00:00:00",
+        "max": "2009-11-01 11:00:00"
+      },
+      "fkeys": {
+        "circuitId": "circuits"
+      },
+      "referenced_by": [
+        "constructor_results.raceId",
+        "constructor_standings.raceId",
+        "qualifying.raceId",
+        "results.raceId",
+        "standings.raceId"
+      ],
+      "dangling_fkeys": {
+        "circuitId": 0
+      },
+      "hops_from": {
+        "circuits": 1,
+        "drivers": 2
+      },
+      "columns": {
+        "raceId": {
+          "dtype": "Int64",
+          "kind": "pkey",
+          "n_null": 0,
+          "n_unique": 820
+        },
+        "year": {
+          "dtype": "int64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 60,
+          "min": 1950.0,
+          "max": 2009.0
+        },
+        "round": {
+          "dtype": "int64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 19,
+          "min": 1.0,
+          "max": 19.0
+        },
+        "circuitId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 66
+        },
+        "name": {
+          "dtype": "object",
+          "kind": "categorical",
+          "n_null": 0,
+          "n_unique": 38
+        },
+        "date": {
+          "dtype": "datetime64[ns]",
+          "kind": "timestamp",
+          "n_null": 0,
+          "n_unique": 820,
+          "min": "1950-05-13 00:00:00",
+          "max": "2009-11-01 11:00:00"
+        },
+        "time": {
+          "dtype": "object",
+          "kind": "categorical",
+          "n_null": 0,
+          "n_unique": 16
+        }
+      }
+    },
+    "results": {
+      "n_rows": 20323,
+      "pkey_col": "resultId",
+      "time_col": "date",
+      "time_range": {
+        "min": "1950-05-13 00:00:00",
+        "max": "2009-11-01 11:00:00"
+      },
+      "fkeys": {
+        "raceId": "races",
+        "driverId": "drivers",
+        "constructorId": "constructors"
+      },
+      "referenced_by": [],
+      "dangling_fkeys": {
+        "raceId": 0,
+        "driverId": 0,
+        "constructorId": 0
+      },
+      "hops_from": {
+        "circuits": 2,
+        "drivers": 1
+      },
+      "columns": {
+        "resultId": {
+          "dtype": "Int64",
+          "kind": "pkey",
+          "n_null": 0,
+          "n_unique": 20323
+        },
+        "raceId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 820
+        },
+        "driverId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 806
+        },
+        "constructorId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 199
+        },
+        "number": {
+          "dtype": "float64",
+          "kind": "numeric",
+          "n_null": 6,
+          "n_unique": 128,
+          "min": 0.0,
+          "max": 208.0
+        },
+        "grid": {
+          "dtype": "int64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 35,
+          "min": 0.0,
+          "max": 34.0
+        },
+        "position": {
+          "dtype": "float64",
+          "kind": "numeric",
+          "n_null": 9914,
+          "n_unique": 33,
+          "min": 1.0,
+          "max": 33.0
+        },
+        "positionOrder": {
+          "dtype": "int64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 39,
+          "min": 1.0,
+          "max": 39.0
+        },
+        "points": {
+          "dtype": "float64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 23,
+          "min": 0.0,
+          "max": 10.0
+        },
+        "laps": {
+          "dtype": "int64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 172,
+          "min": 0.0,
+          "max": 200.0
+        },
+        "milliseconds": {
+          "dtype": "float64",
+          "kind": "numeric",
+          "n_null": 15954,
+          "n_unique": 4340,
+          "min": 1474899.0,
+          "max": 15090540.0
+        },
+        "fastestLap": {
+          "dtype": "float64",
+          "kind": "numeric",
+          "n_null": 18222,
+          "n_unique": 76,
+          "min": 2.0,
+          "max": 77.0
+        },
+        "rank": {
+          "dtype": "float64",
+          "kind": "numeric",
+          "n_null": 18222,
+          "n_unique": 22,
+          "min": 1.0,
+          "max": 22.0
+        },
+        "statusId": {
+          "dtype": "int64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 125,
+          "min": 1.0,
+          "max": 127.0
+        },
+        "date": {
+          "dtype": "datetime64[ns]",
+          "kind": "timestamp",
+          "n_null": 0,
+          "n_unique": 820,
+          "min": "1950-05-13 00:00:00",
+          "max": "2009-11-01 11:00:00"
+        }
+      }
+    },
+    "standings": {
+      "n_rows": 28115,
+      "pkey_col": "driverStandingsId",
+      "time_col": "date",
+      "time_range": {
+        "min": "1950-05-13 00:00:00",
+        "max": "2009-11-01 11:00:00"
+      },
+      "fkeys": {
+        "raceId": "races",
+        "driverId": "drivers"
+      },
+      "referenced_by": [],
+      "dangling_fkeys": {
+        "raceId": 0,
+        "driverId": 0
+      },
+      "hops_from": {
+        "circuits": 2,
+        "drivers": 1
+      },
+      "columns": {
+        "driverStandingsId": {
+          "dtype": "Int64",
+          "kind": "pkey",
+          "n_null": 0,
+          "n_unique": 28115
+        },
+        "raceId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 820
+        },
+        "driverId": {
+          "dtype": "Int64",
+          "kind": "fkey",
+          "n_null": 0,
+          "n_unique": 799
+        },
+        "points": {
+          "dtype": "float64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 182,
+          "min": 0.0,
+          "max": 148.0
+        },
+        "position": {
+          "dtype": "int64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 108,
+          "min": 1.0,
+          "max": 108.0
+        },
+        "wins": {
+          "dtype": "int64",
+          "kind": "numeric",
+          "n_null": 0,
+          "n_unique": 14,
+          "min": 0.0,
+          "max": 13.0
+        },
+        "date": {
+          "dtype": "datetime64[ns]",
+          "kind": "timestamp",
+          "n_null": 0,
+          "n_unique": 820,
+          "min": "1950-05-13 00:00:00",
+          "max": "2009-11-01 11:00:00"
+        }
+      }
+    }
+  },
+  "tasks": {
+    "driver-position": {
+      "task_type": "REGRESSION",
+      "kind": "forecast",
+      "entity_table": "drivers",
+      "entity_col": "driverId",
+      "src_entity_table": null,
+      "dst_entity_table": null,
+      "target_col": "position",
+      "time_col": "date",
+      "timedelta": "60 days 00:00:00",
+      "eval_k": null,
+      "metrics": [
+        "nmae"
+      ],
+      "splits": {
+        "train": {
+          "n_rows": 7453,
+          "min": "1950-06-19 00:00:00",
+          "max": "2004-09-03 00:00:00",
+          "columns": [
+            "date",
+            "driverId",
+            "position"
+          ],
+          "has_target": true
+        },
+        "val": {
+          "n_rows": 499,
+          "min": "2005-03-02 00:00:00",
+          "max": "2009-10-07 00:00:00",
+          "columns": [
+            "date",
+            "driverId",
+            "position"
+          ],
+          "has_target": true
+        },
+        "test": {
+          "n_rows": 760,
+          "min": "2010-03-02 00:00:00",
+          "max": "2016-05-29 00:00:00",
+          "columns": [
+            "date",
+            "driverId"
+          ],
+          "has_target": false
+        }
+      }
+    },
+    "driver-top3": {
+      "task_type": "BINARY_CLASSIFICATION",
+      "kind": "forecast",
+      "entity_table": "drivers",
+      "entity_col": "driverId",
+      "src_entity_table": null,
+      "dst_entity_table": null,
+      "target_col": "qualifying",
+      "time_col": "date",
+      "timedelta": "30 days 00:00:00",
+      "eval_k": null,
+      "metrics": [
+        "roc_auc"
+      ],
+      "splits": {
+        "train": {
+          "n_rows": 1353,
+          "min": "1994-02-28 00:00:00",
+          "max": "2004-10-03 00:00:00",
+          "columns": [
+            "date",
+            "driverId",
+            "qualifying"
+          ],
+          "has_target": true
+        },
+        "val": {
+          "n_rows": 588,
+          "min": "2005-03-02 00:00:00",
+          "max": "2008-03-16 00:00:00",
+          "columns": [
+            "date",
+            "driverId",
+            "qualifying"
+          ],
+          "has_target": true
+        },
+        "test": {
+          "n_rows": 726,
+          "min": "2010-03-02 00:00:00",
+          "max": "2013-03-16 00:00:00",
+          "columns": [
+            "date",
+            "driverId"
+          ],
+          "has_target": false
+        }
+      }
+    },
+    "driver-dnf": {
+      "task_type": "BINARY_CLASSIFICATION",
+      "kind": "forecast",
+      "entity_table": "drivers",
+      "entity_col": "driverId",
+      "src_entity_table": null,
+      "dst_entity_table": null,
+      "target_col": "did_not_finish",
+      "time_col": "date",
+      "timedelta": "30 days 00:00:00",
+      "eval_k": null,
+      "metrics": [
+        "roc_auc"
+      ],
+      "splits": {
+        "train": {
+          "n_rows": 11411,
+          "min": "1950-05-20 00:00:00",
+          "max": "2004-10-03 00:00:00",
+          "columns": [
+            "date",
+            "driverId",
+            "did_not_finish"
+          ],
+          "has_target": true
+        },
+        "val": {
+          "n_rows": 566,
+          "min": "2005-03-02 00:00:00",
+          "max": "2008-03-16 00:00:00",
+          "columns": [
+            "date",
+            "driverId",
+            "did_not_finish"
+          ],
+          "has_target": true
+        },
+        "test": {
+          "n_rows": 702,
+          "min": "2010-03-02 00:00:00",
+          "max": "2013-03-16 00:00:00",
+          "columns": [
+            "date",
+            "driverId"
+          ],
+          "has_target": false
+        }
+      }
+    },
+    "driver-circuit-compete": {
+      "task_type": "RECOMMENDATION",
+      "kind": "forecast",
+      "entity_table": null,
+      "entity_col": null,
+      "src_entity_table": "drivers",
+      "dst_entity_table": "circuits",
+      "target_col": "circuitId",
+      "time_col": "date",
+      "timedelta": "365 days 00:00:00",
+      "eval_k": 10,
+      "metrics": [
+        "map"
+      ],
+      "splits": {
+        "train": {
+          "n_rows": 2649,
+          "min": "1951-01-15 00:00:00",
+          "max": "2004-01-02 00:00:00",
+          "columns": [
+            "date",
+            "driverId",
+            "circuitId"
+          ],
+          "has_target": true
+        },
+        "val": {
+          "n_rows": 27,
+          "min": "2005-01-01 00:00:00",
+          "max": "2005-01-01 00:00:00",
+          "columns": [
+            "date",
+            "driverId",
+            "circuitId"
+          ],
+          "has_target": true
+        },
+        "test": {
+          "n_rows": 27,
+          "min": "2010-01-01 00:00:00",
+          "max": "2010-01-01 00:00:00",
+          "columns": [
+            "date",
+            "driverId"
+          ],
+          "has_target": false
+        }
+      }
+    }
+  }
+}
