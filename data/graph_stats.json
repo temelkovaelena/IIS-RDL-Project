@@ -1,0 +1,617 @@
+{
+  "database": "rel-f1",
+  "relbench_version": "3.0.1",
+  "generated_utc": "2026-09-23T10:58:50+00:00",
+  "db_upto_test_timestamp": true,
+  "test_timestamp": "2010-01-01 00:00:00",
+  "n_node_types": 9,
+  "n_nodes": 74063,
+  "n_edge_types": 26,
+  "n_edges_directed": 338842,
+  "n_edges_undirected": 169421,
+  "static_node_types": [
+    "circuits",
+    "constructors",
+    "drivers"
+  ],
+  "dangling_fkeys_dropped": {
+    "races.circuitId": 0,
+    "qualifying.raceId": 0,
+    "qualifying.driverId": 0,
+    "qualifying.constructorId": 0,
+    "constructor_standings.raceId": 0,
+    "constructor_standings.constructorId": 0,
+    "standings.raceId": 0,
+    "standings.driverId": 0,
+    "constructor_results.raceId": 0,
+    "constructor_results.constructorId": 0,
+    "results.raceId": 0,
+    "results.driverId": 0,
+    "results.constructorId": 0
+  },
+  "node_types": {
+    "circuits": {
+      "n_nodes": 77,
+      "has_time": false,
+      "time_range": null
+    },
+    "constructor_results": {
+      "n_nodes": 9408,
+      "has_time": true,
+      "time_range": {
+        "min": "1956-01-22 00:00:00",
+        "max": "2009-11-01 11:00:00"
+      }
+    },
+    "constructor_standings": {
+      "n_nodes": 10170,
+      "has_time": true,
+      "time_range": {
+        "min": "1958-01-19 00:00:00",
+        "max": "2009-11-01 11:00:00"
+      }
+    },
+    "constructors": {
+      "n_nodes": 211,
+      "has_time": false,
+      "time_range": null
+    },
+    "drivers": {
+      "n_nodes": 857,
+      "has_time": false,
+      "time_range": null
+    },
+    "qualifying": {
+      "n_nodes": 4082,
+      "has_time": true,
+      "time_range": {
+        "min": "1994-03-26 00:00:00",
+        "max": "2009-10-31 11:00:00"
+      }
+    },
+    "races": {
+      "n_nodes": 820,
+      "has_time": true,
+      "time_range": {
+        "min": "1950-05-13 00:00:00",
+        "max": "2009-11-01 11:00:00"
+      }
+    },
+    "results": {
+      "n_nodes": 20323,
+      "has_time": true,
+      "time_range": {
+        "min": "1950-05-13 00:00:00",
+        "max": "2009-11-01 11:00:00"
+      }
+    },
+    "standings": {
+      "n_nodes": 28115,
+      "has_time": true,
+      "time_range": {
+        "min": "1950-05-13 00:00:00",
+        "max": "2009-11-01 11:00:00"
+      }
+    }
+  },
+  "edge_types": {
+    "circuits -rev_f2p_circuitId-> races": {
+      "src": "circuits",
+      "rel": "rev_f2p_circuitId",
+      "dst": "races",
+      "n_edges": 820,
+      "mean": 10.65,
+      "median": 5.0,
+      "p99": 56.719999999999985,
+      "max": 59,
+      "n_isolated": 11
+    },
+    "constructor_results -f2p_constructorId-> constructors": {
+      "src": "constructor_results",
+      "rel": "f2p_constructorId",
+      "dst": "constructors",
+      "n_edges": 9408,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0
+    },
+    "constructor_results -f2p_raceId-> races": {
+      "src": "constructor_results",
+      "rel": "f2p_raceId",
+      "dst": "races",
+      "n_edges": 9408,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0,
+      "time_consistency": {
+        "src_before_dst": 0,
+        "same_time": 9408,
+        "src_after_dst": 0
+      }
+    },
+    "constructor_standings -f2p_constructorId-> constructors": {
+      "src": "constructor_standings",
+      "rel": "f2p_constructorId",
+      "dst": "constructors",
+      "n_edges": 10170,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0
+    },
+    "constructor_standings -f2p_raceId-> races": {
+      "src": "constructor_standings",
+      "rel": "f2p_raceId",
+      "dst": "races",
+      "n_edges": 10170,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0,
+      "time_consistency": {
+        "src_before_dst": 0,
+        "same_time": 10170,
+        "src_after_dst": 0
+      }
+    },
+    "constructors -rev_f2p_constructorId-> constructor_results": {
+      "src": "constructors",
+      "rel": "rev_f2p_constructorId",
+      "dst": "constructor_results",
+      "n_edges": 9408,
+      "mean": 44.59,
+      "median": 5.0,
+      "p99": 527.5000000000006,
+      "max": 741,
+      "n_isolated": 48
+    },
+    "constructors -rev_f2p_constructorId-> constructor_standings": {
+      "src": "constructors",
+      "rel": "rev_f2p_constructorId",
+      "dst": "constructor_standings",
+      "n_edges": 10170,
+      "mean": 48.2,
+      "median": 11.0,
+      "p99": 539.4000000000008,
+      "max": 753,
+      "n_isolated": 64
+    },
+    "constructors -rev_f2p_constructorId-> qualifying": {
+      "src": "constructors",
+      "rel": "rev_f2p_constructorId",
+      "dst": "qualifying",
+      "n_edges": 4082,
+      "mean": 19.35,
+      "median": 0.0,
+      "p99": 365.2000000000007,
+      "max": 378,
+      "n_isolated": 179
+    },
+    "constructors -rev_f2p_constructorId-> results": {
+      "src": "constructors",
+      "rel": "rev_f2p_constructorId",
+      "dst": "results",
+      "n_edges": 20323,
+      "mean": 96.32,
+      "median": 11.0,
+      "p99": 1048.400000000001,
+      "max": 1829,
+      "n_isolated": 12
+    },
+    "drivers -rev_f2p_driverId-> qualifying": {
+      "src": "drivers",
+      "rel": "rev_f2p_driverId",
+      "dst": "qualifying",
+      "n_edges": 4082,
+      "mean": 4.76,
+      "median": 0.0,
+      "p99": 124.43999999999994,
+      "max": 189,
+      "n_isolated": 740
+    },
+    "drivers -rev_f2p_driverId-> results": {
+      "src": "drivers",
+      "rel": "rev_f2p_driverId",
+      "dst": "results",
+      "n_edges": 20323,
+      "mean": 23.71,
+      "median": 5.0,
+      "p99": 208.31999999999982,
+      "max": 288,
+      "n_isolated": 51
+    },
+    "drivers -rev_f2p_driverId-> standings": {
+      "src": "drivers",
+      "rel": "rev_f2p_driverId",
+      "dst": "standings",
+      "n_edges": 28115,
+      "mean": 32.81,
+      "median": 15.0,
+      "p99": 213.31999999999982,
+      "max": 270,
+      "n_isolated": 58
+    },
+    "qualifying -f2p_constructorId-> constructors": {
+      "src": "qualifying",
+      "rel": "f2p_constructorId",
+      "dst": "constructors",
+      "n_edges": 4082,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0
+    },
+    "qualifying -f2p_driverId-> drivers": {
+      "src": "qualifying",
+      "rel": "f2p_driverId",
+      "dst": "drivers",
+      "n_edges": 4082,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0
+    },
+    "qualifying -f2p_raceId-> races": {
+      "src": "qualifying",
+      "rel": "f2p_raceId",
+      "dst": "races",
+      "n_edges": 4082,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0,
+      "time_consistency": {
+        "src_before_dst": 4082,
+        "same_time": 0,
+        "src_after_dst": 0
+      }
+    },
+    "races -f2p_circuitId-> circuits": {
+      "src": "races",
+      "rel": "f2p_circuitId",
+      "dst": "circuits",
+      "n_edges": 820,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0
+    },
+    "races -rev_f2p_raceId-> constructor_results": {
+      "src": "races",
+      "rel": "rev_f2p_raceId",
+      "dst": "constructor_results",
+      "n_edges": 9408,
+      "mean": 11.47,
+      "median": 11.0,
+      "p99": 20.0,
+      "max": 20,
+      "n_isolated": 63,
+      "time_consistency": {
+        "src_before_dst": 0,
+        "same_time": 9408,
+        "src_after_dst": 0
+      }
+    },
+    "races -rev_f2p_raceId-> constructor_standings": {
+      "src": "races",
+      "rel": "rev_f2p_raceId",
+      "dst": "constructor_standings",
+      "n_edges": 10170,
+      "mean": 12.4,
+      "median": 12.0,
+      "p99": 20.0,
+      "max": 22,
+      "n_isolated": 64,
+      "time_consistency": {
+        "src_before_dst": 0,
+        "same_time": 10170,
+        "src_after_dst": 0
+      }
+    },
+    "races -rev_f2p_raceId-> qualifying": {
+      "src": "races",
+      "rel": "rev_f2p_raceId",
+      "dst": "qualifying",
+      "n_edges": 4082,
+      "mean": 4.98,
+      "median": 0.0,
+      "p99": 26.0,
+      "max": 28,
+      "n_isolated": 631,
+      "time_consistency": {
+        "src_before_dst": 0,
+        "same_time": 0,
+        "src_after_dst": 4082
+      }
+    },
+    "races -rev_f2p_raceId-> results": {
+      "src": "races",
+      "rel": "rev_f2p_raceId",
+      "dst": "results",
+      "n_edges": 20323,
+      "mean": 24.78,
+      "median": 24.0,
+      "p99": 39.0,
+      "max": 55,
+      "n_isolated": 0,
+      "time_consistency": {
+        "src_before_dst": 0,
+        "same_time": 20323,
+        "src_after_dst": 0
+      }
+    },
+    "races -rev_f2p_raceId-> standings": {
+      "src": "races",
+      "rel": "rev_f2p_raceId",
+      "dst": "standings",
+      "n_edges": 28115,
+      "mean": 34.29,
+      "median": 30.0,
+      "p99": 93.80999999999995,
+      "max": 108,
+      "n_isolated": 0,
+      "time_consistency": {
+        "src_before_dst": 0,
+        "same_time": 28115,
+        "src_after_dst": 0
+      }
+    },
+    "results -f2p_constructorId-> constructors": {
+      "src": "results",
+      "rel": "f2p_constructorId",
+      "dst": "constructors",
+      "n_edges": 20323,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0
+    },
+    "results -f2p_driverId-> drivers": {
+      "src": "results",
+      "rel": "f2p_driverId",
+      "dst": "drivers",
+      "n_edges": 20323,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0
+    },
+    "results -f2p_raceId-> races": {
+      "src": "results",
+      "rel": "f2p_raceId",
+      "dst": "races",
+      "n_edges": 20323,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0,
+      "time_consistency": {
+        "src_before_dst": 0,
+        "same_time": 20323,
+        "src_after_dst": 0
+      }
+    },
+    "standings -f2p_driverId-> drivers": {
+      "src": "standings",
+      "rel": "f2p_driverId",
+      "dst": "drivers",
+      "n_edges": 28115,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0
+    },
+    "standings -f2p_raceId-> races": {
+      "src": "standings",
+      "rel": "f2p_raceId",
+      "dst": "races",
+      "n_edges": 28115,
+      "mean": 1.0,
+      "median": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "n_isolated": 0,
+      "time_consistency": {
+        "src_before_dst": 0,
+        "same_time": 28115,
+        "src_after_dst": 0
+      }
+    }
+  },
+  "seed_visibility": {
+    "driver-position": {
+      "train": {
+        "n_seeds": 7453,
+        "per_relation": {
+          "drivers -rev_f2p_driverId-> qualifying": {
+            "mean": 4.3,
+            "median": 0.0,
+            "max": 96,
+            "frac_zero": 0.845
+          },
+          "drivers -rev_f2p_driverId-> standings": {
+            "mean": 44.0,
+            "median": 29.0,
+            "max": 259,
+            "frac_zero": 0.1
+          },
+          "drivers -rev_f2p_driverId-> results": {
+            "mean": 39.5,
+            "median": 22.0,
+            "max": 256,
+            "frac_zero": 0.095
+          }
+        },
+        "total_1hop": {
+          "mean": 87.8,
+          "median": 52.0,
+          "max": 517,
+          "frac_zero": 0.095
+        }
+      },
+      "test": {
+        "n_seeds": 760,
+        "per_relation": {
+          "drivers -rev_f2p_driverId-> qualifying": {
+            "mean": 43.0,
+            "median": 11.0,
+            "max": 189,
+            "frac_zero": 0.43
+          },
+          "drivers -rev_f2p_driverId-> standings": {
+            "mean": 52.9,
+            "median": 8.5,
+            "max": 270,
+            "frac_zero": 0.43
+          },
+          "drivers -rev_f2p_driverId-> results": {
+            "mean": 53.0,
+            "median": 11.0,
+            "max": 288,
+            "frac_zero": 0.43
+          }
+        },
+        "total_1hop": {
+          "mean": 148.8,
+          "median": 30.5,
+          "max": 747,
+          "frac_zero": 0.43
+        }
+      }
+    },
+    "driver-top3": {
+      "train": {
+        "n_seeds": 1353,
+        "per_relation": {
+          "drivers -rev_f2p_driverId-> qualifying": {
+            "mean": 23.2,
+            "median": 16.0,
+            "max": 98,
+            "frac_zero": 0.068
+          },
+          "drivers -rev_f2p_driverId-> standings": {
+            "mean": 61.3,
+            "median": 48.0,
+            "max": 216,
+            "frac_zero": 0.055
+          },
+          "drivers -rev_f2p_driverId-> results": {
+            "mean": 61.4,
+            "median": 48.0,
+            "max": 213,
+            "frac_zero": 0.038
+          }
+        },
+        "total_1hop": {
+          "mean": 145.8,
+          "median": 114.0,
+          "max": 523,
+          "frac_zero": 0.036
+        }
+      },
+      "test": {
+        "n_seeds": 726,
+        "per_relation": {
+          "drivers -rev_f2p_driverId-> qualifying": {
+            "mean": 53.1,
+            "median": 43.0,
+            "max": 189,
+            "frac_zero": 0.282
+          },
+          "drivers -rev_f2p_driverId-> standings": {
+            "mean": 68.1,
+            "median": 50.0,
+            "max": 270,
+            "frac_zero": 0.282
+          },
+          "drivers -rev_f2p_driverId-> results": {
+            "mean": 68.1,
+            "median": 44.0,
+            "max": 288,
+            "frac_zero": 0.282
+          }
+        },
+        "total_1hop": {
+          "mean": 189.3,
+          "median": 144.0,
+          "max": 747,
+          "frac_zero": 0.282
+        }
+      }
+    },
+    "driver-dnf": {
+      "train": {
+        "n_seeds": 11411,
+        "per_relation": {
+          "drivers -rev_f2p_driverId-> qualifying": {
+            "mean": 4.9,
+            "median": 0.0,
+            "max": 98,
+            "frac_zero": 0.824
+          },
+          "drivers -rev_f2p_driverId-> standings": {
+            "mean": 47.9,
+            "median": 33.0,
+            "max": 259,
+            "frac_zero": 0.071
+          },
+          "drivers -rev_f2p_driverId-> results": {
+            "mean": 43.6,
+            "median": 27.0,
+            "max": 256,
+            "frac_zero": 0.067
+          }
+        },
+        "total_1hop": {
+          "mean": 96.4,
+          "median": 62.0,
+          "max": 523,
+          "frac_zero": 0.066
+        }
+      },
+      "test": {
+        "n_seeds": 702,
+        "per_relation": {
+          "drivers -rev_f2p_driverId-> qualifying": {
+            "mean": 52.8,
+            "median": 43.0,
+            "max": 189,
+            "frac_zero": 0.285
+          },
+          "drivers -rev_f2p_driverId-> standings": {
+            "mean": 67.8,
+            "median": 47.0,
+            "max": 270,
+            "frac_zero": 0.285
+          },
+          "drivers -rev_f2p_driverId-> results": {
+            "mean": 67.7,
+            "median": 43.5,
+            "max": 288,
+            "frac_zero": 0.285
+          }
+        },
+        "total_1hop": {
+          "mean": 188.3,
+          "median": 136.0,
+          "max": 747,
+          "frac_zero": 0.285
+        }
+      }
+    }
+  }
+}
