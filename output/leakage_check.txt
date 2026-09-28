@@ -1,0 +1,29 @@
+leakage check: rel-f1 / driver-top3 / val
+
+1. temporal splits
+
+val_timestamp:  2005-01-01 00:00:00
+test_timestamp: 2010-01-01 00:00:00
+
+  train   1353 rows   1994-02-28 .. 2004-10-03
+  val      588 rows   2005-03-02 .. 2008-03-16
+  test     726 rows   2010-03-02 .. 2013-03-16
+
+  splits are ordered in time and do not overlap
+
+2. truncate the database at the last seed
+
+  cutoff 2008-03-16 removes 2885 rows from the database
+  588 seeds x 33 features recomputed
+  identical after truncation: True
+
+3. truncate at each seed's own timestamp
+
+  25 seeds, each with the database cut at its own timestamp
+  features that changed: 0
+
+4. graph side: visible neighbours against a plain pandas count
+
+  drivers -> results, 588 seeds
+  graph matches a plain pandas count on 100 seeds: True
+  mean visible neighbours: 86.8
