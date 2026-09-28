@@ -1,10 +1,13 @@
 # Kaggle / Colab half (Linux + GPU) — the GNN, sweeps and the custom task.
 # Install order matters: torch first, then the PyG stack.
-relbench[example]
+relbench
 torch
 torch_geometric
 pytorch_frame
 sentence-transformers
 lightgbm
-# pyg-lib speeds up neighbour sampling; use the index matching the runtime's torch build:
-# pip install pyg-lib -f https://data.pyg.org/whl/torch-2.9.0+cu121.html
+# NeighborLoader needs a compiled sampling backend. Match the index to the runtime's
+# torch and CUDA build, for example:
+#   pip install pyg-lib torch-sparse -f https://data.pyg.org/whl/torch-2.6.0+cu124.html
+pyg-lib
+torch-sparse
