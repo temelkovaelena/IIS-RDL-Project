@@ -23,6 +23,7 @@ from relbench.modeling.graph import get_node_train_table_input, make_pkey_fkey_g
 from relbench.modeling.utils import get_stype_proposal
 from torch_geometric.loader import NeighborLoader
 
+from features import drop_text_columns, text_embedder_config
 from model_gnn import Model
 
 EVAL_COLUMNS = [
@@ -136,6 +137,11 @@ def main() -> None:
     parser.add_argument("--aggr", default="sum")
     parser.add_argument("--num-workers", type=int, default=0)
     parser.add_argument("--cache-dir", default=None)
+    parser.add_argument(
+        "--no-text",
+        action="store_true",
+        help="Drop text columns instead of embedding them. Not comparable to published numbers.",
+    )
     parser.add_argument("--out", type=Path, default=Path("output/evaluation.csv"))
     args = parser.parse_args()
 
@@ -148,9 +154,19 @@ def main() -> None:
     task = dataset.load_task(args.task)
     db = dataset.get_db()
 
+    # Text columns (driver, constructor and circuit names) need an embedder supplied up
+    # front, otherwise torch_frame refuses to build the dataset.
+    col_to_stype = get_stype_proposal(db)
+    if args.no_text:
+        col_to_stype = drop_text_columns(col_to_stype)
+        text_cfg = None
+    else:
+        text_cfg = text_embedder_config(device=device)
+
     data, col_stats_dict = make_pkey_fkey_graph(
         db,
-        col_to_stype_dict=get_stype_proposal(db),
+        col_to_stype_dict=col_to_stype,
+        text_embedder_cfg=text_cfg,
         cache_dir=args.cache_dir,
         remove_columns=task.hidden_columns(),
     )
