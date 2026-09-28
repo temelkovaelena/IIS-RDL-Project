@@ -53,3 +53,15 @@ rel-f1,driver-position,REGRESSION,gnn,val,all,nmae,0.444137,1,0.952,0.0
 rel-f1,driver-position,REGRESSION,gnn,test,all,nmae,0.597982,1,0.952,0.0
 rel-f1,driver-position,REGRESSION,gnn,val,all,nmae,0.445088,2,0.951,0.0
 rel-f1,driver-position,REGRESSION,gnn,test,all,nmae,0.589191,2,0.951,0.0
+rel-f1,driver-constructor,RECOMMENDATION,persistence,val,all,map@3,0.530184,0,0,0
+rel-f1,driver-constructor,RECOMMENDATION,persistence,val,movers,map@3,0.02193,0,0,0
+rel-f1,driver-constructor,RECOMMENDATION,persistence,val,rookies,map@3,0.083333,0,0,0
+rel-f1,driver-constructor,RECOMMENDATION,popularity,val,all,map@3,0.125328,0,0,0
+rel-f1,driver-constructor,RECOMMENDATION,popularity,val,movers,map@3,0.065789,0,0,0
+rel-f1,driver-constructor,RECOMMENDATION,popularity,val,rookies,map@3,0.083333,0,0,0
+rel-f1,driver-constructor,RECOMMENDATION,persistence,test,all,map@3,0.252427,0,0,0
+rel-f1,driver-constructor,RECOMMENDATION,persistence,test,movers,map@3,0.02451,0,0,0
+rel-f1,driver-constructor,RECOMMENDATION,persistence,test,rookies,map@3,0.088235,0,0,0
+rel-f1,driver-constructor,RECOMMENDATION,popularity,test,all,map@3,0.142395,0,0,0
+rel-f1,driver-constructor,RECOMMENDATION,popularity,test,movers,map@3,0.078431,0,0,0
+rel-f1,driver-constructor,RECOMMENDATION,popularity,test,rookies,map@3,0.088235,0,0,0
