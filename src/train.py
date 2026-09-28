@@ -40,6 +40,9 @@ EVAL_COLUMNS = [
     "engineering_minutes",
 ]
 
+# Written only to the sweep file, so output/evaluation.csv keeps the agreed columns.
+SWEEP_COLUMNS = EVAL_COLUMNS + ["lr", "channels", "num_layers", "num_neighbors", "epochs"]
+
 
 def check_no_future(batch, entity_table: str) -> int:
     """Every sampled node must be at or before the seed time it was sampled for.
@@ -114,10 +117,11 @@ def predict(model, loader, entity_table, device, task_type, clamp, verify: bool)
 
 
 def append_rows(path: Path, rows: list[dict]) -> None:
+    columns = SWEEP_COLUMNS if any("lr" in row for row in rows) else EVAL_COLUMNS
     path.parent.mkdir(parents=True, exist_ok=True)
     exists = path.exists()
     with path.open("a", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=EVAL_COLUMNS, lineterminator="\n")
+        writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
         if not exists:
             writer.writeheader()
         writer.writerows(rows)
@@ -138,11 +142,28 @@ def main() -> None:
     parser.add_argument("--num-workers", type=int, default=0)
     parser.add_argument("--cache-dir", default=None)
     parser.add_argument(
+        "--arm",
+        default="gnn",
+        help="Label written to the arm column, e.g. gnn-hops1 for an ablation run.",
+    )
+    parser.add_argument(
+        "--splits",
+        nargs="*",
+        default=["val", "test"],
+        help="Which splits to score. Use only val while searching hyperparameters, so the "
+        "test split is untouched during model selection.",
+    )
+    parser.add_argument(
         "--no-text",
         action="store_true",
         help="Drop text columns instead of embedding them. Not comparable to published numbers.",
     )
     parser.add_argument("--out", type=Path, default=Path("output/evaluation.csv"))
+    parser.add_argument(
+        "--sweep",
+        action="store_true",
+        help="Also record the hyperparameters on each row. For the sweep file, not results.",
+    )
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
@@ -226,7 +247,7 @@ def main() -> None:
     model.load_state_dict(best_state)
 
     rows = []
-    for split in ("val", "test"):
+    for split in args.splits:
         table = task.get_table(split, mask_input_cols=False)
         pred = predict(model, loaders[split], entity_table, device, task.task_type, clamp, True)
         for metric, value in task.evaluate(pred, table).items():
@@ -235,7 +256,7 @@ def main() -> None:
                     "database": args.dataset,
                     "task": args.task,
                     "task_type": str(task.task_type).removeprefix("TaskType."),
-                    "arm": "gnn",
+                    "arm": args.arm,
                     "split": split,
                     "slice": "all",
                     "metric": metric,
@@ -245,6 +266,14 @@ def main() -> None:
                     "engineering_minutes": 0,
                 }
             )
+            if args.sweep:
+                rows[-1].update(
+                    lr=args.lr,
+                    channels=args.channels,
+                    num_layers=args.num_layers,
+                    num_neighbors=args.num_neighbors,
+                    epochs=args.epochs,
+                )
             print(f"  {split:5s} {metric:10s} {value:.4f}")
 
     append_rows(args.out, rows)
