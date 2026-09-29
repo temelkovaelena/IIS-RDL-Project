@@ -1,0 +1,7 @@
+database,task,task_type,arm,split,slice,metric,value,seed,train_minutes,engineering_minutes,lr,channels,num_layers,num_neighbors,epochs
+rel-f1,driver-top3,BINARY_CLASSIFICATION,gnn-lr0.01-ch64,val,all,roc_auc,0.767322,0,0.312,0,0.01,64,2,128,20
+rel-f1,driver-top3,BINARY_CLASSIFICATION,gnn-lr0.01-ch128,val,all,roc_auc,0.797764,0,0.362,0,0.01,128,2,128,20
+rel-f1,driver-top3,BINARY_CLASSIFICATION,gnn-lr0.005-ch64,val,all,roc_auc,0.775707,0,0.315,0,0.005,64,2,128,20
+rel-f1,driver-top3,BINARY_CLASSIFICATION,gnn-lr0.005-ch128,val,all,roc_auc,0.793141,0,0.357,0,0.005,128,2,128,20
+rel-f1,driver-top3,BINARY_CLASSIFICATION,gnn-lr0.001-ch64,val,all,roc_auc,0.767322,0,0.314,0,0.001,64,2,128,20
+rel-f1,driver-top3,BINARY_CLASSIFICATION,gnn-lr0.001-ch128,val,all,roc_auc,0.747003,0,0.354,0,0.001,128,2,128,20

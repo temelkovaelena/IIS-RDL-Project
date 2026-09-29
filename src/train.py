@@ -81,7 +81,13 @@ def build_loaders(data, task, args, device):
     return loaders
 
 
-def train_epoch(model, loader, optimizer, loss_fn, entity_table, device, clamp):
+def train_epoch(model, loader, optimizer, loss_fn, entity_table, device):
+    """One pass over the training set.
+
+    The prediction is deliberately NOT clamped here. Clamping before the loss gives a zero
+    gradient to anything outside the range, so once the outputs drift out they can never come
+    back and the model freezes on a constant. Clamping belongs at prediction time only.
+    """
     model.train()
     total_loss = total_count = 0
     for batch in loader:
@@ -89,8 +95,6 @@ def train_epoch(model, loader, optimizer, loss_fn, entity_table, device, clamp):
         optimizer.zero_grad()
         pred = model(batch, entity_table).squeeze(-1)
         target = batch[entity_table].y.float()
-        if clamp is not None:
-            pred = torch.clamp(pred, *clamp)
         loss = loss_fn(pred.float(), target)
         loss.backward()
         optimizer.step()
@@ -228,7 +232,7 @@ def main() -> None:
     started = time.perf_counter()
 
     for epoch in range(1, args.epochs + 1):
-        loss = train_epoch(model, loaders["train"], optimizer, loss_fn, entity_table, device, clamp)
+        loss = train_epoch(model, loaders["train"], optimizer, loss_fn, entity_table, device)
         val_pred = predict(
             model, loaders["val"], entity_table, device, task.task_type, clamp, epoch == 1
         )
