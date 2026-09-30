@@ -10,6 +10,10 @@ data/*
 # ...except the two small generated json files, which are results the README refers to.
 !data/schema.json
 !data/graph_stats.json
+# The custom task labels: csv is readable in the repo, pickle is a build artefact.
+!data/driver_constructor/
+!data/driver_constructor/*.csv
+data/driver_constructor/*.pkl
 
 # Model checkpoints
 *.pt

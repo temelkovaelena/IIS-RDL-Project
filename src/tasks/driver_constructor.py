@@ -145,7 +145,14 @@ def main() -> None:
     )
     args.out.mkdir(parents=True, exist_ok=True)
     for name, df in splits.items():
+        # Pickle for the pipeline, because the target is a list per row. CSV alongside it so
+        # the labels can be read in the repository without running anything.
         df.to_pickle(args.out / f"{name}.pkl")
+        readable = df.copy()
+        readable["constructorId"] = readable["constructorId"].apply(
+            lambda a: " ".join(str(int(c)) for c in a)
+        )
+        readable.to_csv(args.out / f"{name}.csv", index=False, lineterminator="\n")
 
     print(f"seeds: {len(labels)}  |  seasons: {labels['date'].nunique()}")
     print(
