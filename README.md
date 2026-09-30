@@ -56,29 +56,29 @@ GNN делот се врти на Kaggle преку `notebooks/kaggle_runner.ipy
 
 ## Стартување
 
-Шема и граф:
+Целиот локален дел:
 ```bash
-python src/build_db.py
-python src/graph_builder.py
+python src/main.py
 ```
 
-Визуелизации:
+Тоа ги извршува по ред: шема, граф, визуелизации, двата табеларни модела, label табелите за
+сопствената задача, тривијалните baseline-и и проверката за протекување. Чекорите зависат
+еден од друг, па редоследот е важен.
+
+Само одделни чекори:
 ```bash
-python src/visualize.py
+python src/main.py --only schema graph
+python src/main.py --skip visualisation
 ```
 
-Табеларни модели:
-```bash
-python src/baseline_tabular.py --mode flat
-python src/baseline_tabular.py --mode engineered
-```
-
-Проверка за протекување:
-```bash
-python src/check_leakage.py --task driver-top3
-```
+GNN делот не е тука. Се врти на Kaggle преку `notebooks/kaggle_runner.ipynb`, бидејќи за
+Intel Mac нема понови верзии на PyTorch.
 
 ## Фајлови во `src`
+
+### `main.py`
+Го извршува локалниот дел од pipeline-от по ред. Пред табеларните модели ги брише нивните
+редови од претходно трчање, за да не се дуплираат при повторно извршување.
 
 ### `build_db.py`
 Ја вчитува базата преку RelBench и ја запишува шемата во `data/schema.json`: по табела —
