@@ -41,7 +41,14 @@ EVAL_COLUMNS = [
 ]
 
 # Written only to the sweep file, so output/evaluation.csv keeps the agreed columns.
-SWEEP_COLUMNS = EVAL_COLUMNS + ["lr", "channels", "num_layers", "num_neighbors", "epochs"]
+SWEEP_COLUMNS = EVAL_COLUMNS + [
+    "lr",
+    "channels",
+    "num_layers",
+    "num_neighbors",
+    "epochs",
+    "temporal_strategy",
+]
 
 
 def check_no_future(batch, entity_table: str) -> int:
@@ -73,6 +80,7 @@ def build_loaders(data, task, args, device):
             input_nodes=table_input.nodes,
             input_time=table_input.time,
             transform=table_input.transform,
+            temporal_strategy=args.temporal_strategy,
             batch_size=args.batch_size,
             shuffle=(split == "train"),
             num_workers=args.num_workers,
@@ -144,6 +152,13 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=512)
     parser.add_argument("--aggr", default="sum")
     parser.add_argument("--num-workers", type=int, default=0)
+    parser.add_argument(
+        "--temporal-strategy",
+        default="uniform",
+        choices=["uniform", "last"],
+        help="How neighbours are chosen among those older than the seed. uniform draws at "
+        "random; last takes the most recent ones, which is a choice rather than a draw.",
+    )
     parser.add_argument("--cache-dir", default=None)
     parser.add_argument(
         "--arm",
@@ -277,6 +292,7 @@ def main() -> None:
                     num_layers=args.num_layers,
                     num_neighbors=args.num_neighbors,
                     epochs=args.epochs,
+                    temporal_strategy=args.temporal_strategy,
                 )
             print(f"  {split:5s} {metric:10s} {value:.4f}")
 
